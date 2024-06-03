@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	
+	<title>Poll !</title>
+
+	<style>
+		
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f2f2f2;
+		}
+
+		h2 {
+			color: #333;
+			text-align: center;
+		}
+
+		form {
+			background-color: rgb(0, 128, 128);
+			padding: 20px;
+			border-radius: 5px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+			margin: 0 auto;
+			width: 300px;
+		}
+
+		label {
+			display: block;
+			margin: 10px 0;
+		}
+
+		input[type="radio"] {
+			margin-right: 5px;
+		}
+
+		button {
+			background-color: #007bff;
+			color: rgb(128, 64, 0);
+			border: none;
+			padding: 10px 20px;
+			border-radius: 5px;
+			cursor: pointer;
+		}
+	</style>
+</head>
+
+<body>
+	<h1 th:text="${poll.title}"></h1>
+    <form action="/poll" method="post">
+        <input type="hidden" name="pollId" th:value="${poll.id}">
+        <label th:for="${'Option1'}" th:text="${poll.answer1}"></label>
+        <input type="radio" id="Option1" name="selectedOption" value="1">
+        
+        <label th:for="${'Option2'}" th:text="${poll.answer2}"></label>
+        <input type="radio" id="Option2" name="selectedOption" value="2">
+        
+        <label th:for="${'Option1'}" th:text="${poll.answer3}"></label>
+        <input type="radio" id="Option3" name="selectedOption" value="3">
+
+        <button type="submit">Submit</button>
+</body>
+
+</html>
